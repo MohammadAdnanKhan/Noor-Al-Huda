@@ -72,5 +72,6 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
     )
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8000))  # Use the Render-provided PORT
+    import uvicorn
+    port = int(os.getenv("PORT", 8000))  # Get PORT from Render, default to 8000 locally
     uvicorn.run(app, host="0.0.0.0", port=port)
