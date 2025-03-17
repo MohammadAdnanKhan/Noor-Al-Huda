@@ -71,7 +71,6 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
         detail="Rate limit exceeded. You can make 10 requests every 15 minutes."
     )
 
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.getenv("PORT", 8000))  # Get PORT from Render, default to 8000 locally
-    uvicorn.run(app, host="0.0.0.0", port=port)
+import uvicorn
+port = int(os.getenv("PORT", 8000))  # Get PORT from Render, default to 8000 locally
+uvicorn.run(app, host="0.0.0.0", port=port)
