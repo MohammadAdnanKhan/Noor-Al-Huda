@@ -1,0 +1,42 @@
+<%- include("header.ejs") %>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="images/logo.jpg" alt="Seerat Logo" class="logo"> Noor-Al-Huda
+        </a>
+<style>.navbar-toggler {
+    border: 1px solid aliceblue;
+    background-color: transparent; 
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+</style>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: aliceblue;border:1px">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/quiz">Quizzes</a></li>
+                <li class="nav-item"><a class="nav-link" href="/resources">Seerat Resources</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ilmbot">IlmBot</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/hadith">Daily Hadith</a></li>
+                        <li><a class="dropdown-item" href="/history">Historical Places</a></li>
+                        <li><a class="dropdown-item" href="/kids-corner">Kids Corner</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

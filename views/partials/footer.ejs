@@ -1,0 +1,116 @@
+<style>
+.footer {
+    background: linear-gradient(to right, #0F2417, #1B3B24); /* Dark green gradient */
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+    border-bottom: 2px solid #c79c36; /* Golden bottom border */
+    padding: 40px 0;
+    font-size: 16px;
+}
+
+.footer .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.footer h5 {
+    color: gold;
+    font-weight: bold;
+}
+
+.footer p, .footer a {
+    color: #ddd;
+}
+
+.footer a {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    color: gold;
+    text-decoration: underline;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 8px 0;
+}
+
+.footer-links ul li a {
+    display: block;
+    padding: 5px;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 8px;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: gold;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+</style>
+
+<footer class="footer mt-5">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 footer-about">
+                <a href="/"><div class="logo-container">
+                    <img src="/images/logo.jpg" alt="Noor-Al-Huda Logo" class="footer-logo">
+                    <h5>Noor-Al-Huda</h5>
+                </div></a>
+                <p>A platform to explore the life of Prophet Muhammad (PBUH), daily hadiths, quiz, chatbot, historical places, and more.</p>
+            </div>
+
+            <div class="col-md-4 footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/resources">Seerat Resources</a></li>
+                    <li><a href="/hadith">Daily Hadith</a></li>
+                    <li><a href="/quiz">Quiz</a></li>
+                    <li><a href="/ilmBot">IlmBot</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 footer-contact">
+                <h5>Contact Us</h5>
+                <p>Email: <a href="mailto:mohdadnankhan.india@gmail.com">mohdadnankhan.india@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <p>© <script>document.write(new Date().getFullYear());</script> Noor-Al-Huda. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/script.js"></script>
