@@ -1,0 +1,371 @@
+<%- include("./partials/navbar.ejs") %>
+
+<style>
+    .title {
+        font-size: 32px;
+        color: #0a6847;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #0a6847;
+        background: white;
+        border: 2px solid #0a6847;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: #0a6847;
+        color: white;
+    }
+
+    #book-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .book-card {
+        width: calc(33.333% - 20px); 
+        display: flex;
+        justify-content: center;
+        min-width: 280px;
+    }
+
+    .card {
+        background: white;
+        width: 100%;
+        max-width: 350px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        min-height: 480px; 
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        min-height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .card-body a {
+        display: block;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .open-btn {
+        background: #0a6847;
+        color: white;
+        border: 2px solid #0a6847;
+    }
+
+    .download-btn {
+        background: #ffb300;
+        color: black;
+        border: 2px solid #ffb300;
+    }
+
+    .link-btn {
+        background: #1572a1;
+        color: white;
+        border: 2px solid #1572a1;
+    }
+
+    .card-body a:hover {
+        opacity: 0.85;
+    }
+
+    @media (max-width: 1024px) {
+        .book-card {
+            width: calc(50% - 20px); 
+        }
+    }
+
+    @media (max-width: 768px) {
+        .book-card {
+            width: 100%; 
+        }
+    }
+</style>
+<style>
+    .video-card {
+        margin-bottom: 20px;
+    }
+
+    .video-card iframe {
+        width: 100%;
+        height: 315px; 
+        border-radius: 10px;
+    }
+
+    .btn-group .btn {
+        font-weight: bold;
+        padding: 10px 20px;
+    }
+
+    .btn.active {
+        background-color: green;
+        color: white;
+    }
+</style>
+<div class="container text-center mt-4">
+    <h1 class="title">📚 Seerat Books and Articles</h1>
+    <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 20px;">
+        Explore a curated collection of Seerat books in English, Hindi, and Urdu, available for reading and download.
+    </p>
+    <div class="btn-group mb-4">
+        <button class="btn btn-outline-success filter-btn" data-filter="all">All</button>
+        <button class="btn btn-outline-success filter-btn" data-filter="english">English</button>
+        <button class="btn btn-outline-success filter-btn" data-filter="hindi">Hindi</button>
+        <button class="btn btn-outline-success filter-btn" data-filter="urdu">Urdu</button>
+    </div>
+
+    <div class="row" id="book-list">
+        
+        <!-- English Books -->
+        <div class="col-md-4 book-card english">
+            <div class="card">
+                <img src="images/ali-miyan.jpg" class="card-img-top" alt="Abul Hasan Ali Hasni Nadwi">
+                <div class="card-body">
+                    <h5 class="card-title">Abul Hasan Ali Hasni Nadwi</h5>
+                    <a href="Books/Ali miyan Nadwi English.pdf" target="_blank" class="btn open-btn">📖 Open</a>
+                    <a href="Books/Ali miyan Nadwi English.pdf" download class="btn btn-warning">⬇ Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 book-card english">
+            <div class="card">
+                <img src="images/sealed-nectar.jpg" class="card-img-top" alt="Ar Raheeq ul Makhtoom">
+                <div class="card-body">
+                    <h5 class="card-title">The Sealed Nectar</h5>
+                    <a href="Books/The Sealed Nectar English.pdf" target="_blank" class="btn open-btn">📖 Open</a>
+                    <a href="Books/The Sealed Nectar English.pdf" download class="btn btn-warning">⬇ Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 book-card english">
+            <div class="card">
+                <img src="images/ibn-hisham.jpg" class="card-img-top" alt="Ibn Hisham English">
+                <div class="card-body">
+                    <h5 class="card-title">Ibn Hisham</h5>
+                    <a href="https://islamfuture.wordpress.com/wp-content/uploads/2009/12/sirat-ibn-hisham-biography-of-the-prophet.pdf" target="_blank" class="btn btn-info">🌐 View Link</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hindi Books -->
+        <div class="col-md-4 book-card hindi">
+            <div class="card">
+                <img src="images/inayat-ullah.jpg" class="card-img-top" alt="Inayat Ullah Subhani">
+                <div class="card-body">
+                    <h5 class="card-title">Inayat Ullah Subhani</h5>
+                    <a href="Books/Inayat Ullah Subhani Hindi.pdf" target="_blank" class="btn btn-success">📖 Open</a>
+                    <a href="Books/Inayat Ullah Subhani Hindi.pdf" download class="btn btn-warning">⬇ Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 book-card hindi">
+            <div class="card">
+                <img src="images/ar-rahikul-hindi.jpg" class="card-img-top" alt="Ibn Hisham English">
+                <div class="card-body">
+                    <h5 class="card-title">Ar Rahikul Makhtoom Hindi</h5>
+                    <a href="https://archive.org/details/ar-raheeq-al-makhtoom-hindi/page/n19/mode/2up" target="_blank" class="btn btn-info">🌐 View Link</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Urdu Books -->
+        <div class="col-md-4 book-card urdu">
+            <div class="card">
+                <img src="images/dr-israr.jpg" class="card-img-top" alt="Dr Israr Ahmed">
+                <div class="card-body">
+                    <h5 class="card-title">Dr Israr Ahmed</h5>
+                    <a href="Books/Dr Israr Seerat Urdu.pdf" target="_blank" class="btn btn-success">📖 Open</a>
+                    <a href="Books/Dr Israr Seerat Urdu.pdf" download class="btn btn-warning">⬇ Download</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 book-card urdu">
+            <div class="card">
+                <img src="images/ar-rahikul.jpg" class="card-img-top" alt="Shibli Nomani">
+                <div class="card-body">
+                    <h5 class="card-title">Ar Rahekul Makhtum</h5>
+                    <a href="https://www.slideshare.net/slideshow/alraheeq-ulmakhtoom-top-book-on-seerat-e-nabvi-saw/51552951" target="_blank" class="btn btn-info">🌐 View Link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 book-card urdu">
+            <div class="card">
+                <img src="images/dr-israr.jpg" class="card-img-top" alt="Dr Israr Articles">
+                <div class="card-body">
+                    <h5 class="card-title">Articles Of Dr Israr</h5>
+                    <a href="https://quranacademy.edu.pk/BOOKS/ViewBy/category/MediaID/194/Category/Seerat-un-Nabi-and-Tareekh-e-Islam" target="_blank" class="btn btn-info">🌐 View Link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center mt-4">
+    <h1 class="title">🎥 Seerat Video Resources</h1>
+    <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 20px;">
+        Watch insightful Seerat video lectures in Hindi/Urdu and English by renowned scholars.
+    </p>
+    <!-- Filter Buttons -->
+    <div class="btn-group mb-4">
+        <button class="btn btn-success filter-btn active" data-filter="urdu-hindi">Urdu/Hindi</button>
+        <button class="btn btn-outline-success filter-btn" data-filter="english1">English</button>
+    </div>
+
+    <!-- Video Section -->
+    <div class="row" id="video-list">
+        
+        <!-- Hindi/Urdu Videos -->
+        <div class="col-md-6 video-card urdu-hindi">
+            <h5 class="video-title">Dr. Israr Ahmed (Playlist)</h5>
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PL5JRjKjqvOGgTKsYHEI6EGsW5Lk0OBLBG" allowfullscreen></iframe>
+        </div>
+
+        <div class="col-md-6 video-card urdu-hindi">
+            <h5 class="video-title">Sheikh Makki Al-Hijazi (Playlist)</h5>
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLvlDRNpJgZHPNIG-YEcBgOp0Ca2aCSK1z" allowfullscreen></iframe>
+        </div>
+
+        <div class="col-md-6 video-card urdu-hindi">
+            <h5 class="video-title">Mufti Tariq Masood</h5>
+            <iframe src="https://www.youtube.com/embed/3EoHQ9mpLfo" allowfullscreen></iframe>
+        </div>
+
+        <div class="col-md-6 video-card urdu-hindi">
+            <h5 class="video-title">Mufti Tariq Masood</h5>
+            <iframe src="https://www.youtube.com/embed/BuEqV1T4Ccw" allowfullscreen></iframe>
+        </div>
+
+        <div class="col-md-6 video-card urdu-hindi">
+            <h5 class="video-title">Mufti Tariq Masood</h5>
+            <iframe src="https://www.youtube.com/embed/R9jiCLtOEKQ" allowfullscreen></iframe>
+        </div>
+
+        <div class="col-md-6 video-card urdu-hindi">
+            <h5 class="video-title">Maulana Tariq Jameel</h5>
+            <iframe src="https://www.youtube.com/embed/J4ZUq2dWJOU" allowfullscreen></iframe>
+        </div>
+
+        <!-- English Videos -->
+        <div class="col-md-6 video-card english1" style="display: none;">
+            <h5 class="video-title">Mufti Menk (Playlist)</h5>
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLW7-5eCq8IySZOYczT-Z9-vFIBWNH5UMT" allowfullscreen></iframe>
+        </div>
+
+    </div>
+</div>
+
+
+<%- include("./partials/footer.ejs") %>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let defaultFilter = "english";    
+
+        document.querySelectorAll(".book-card").forEach(card => {
+            card.style.display = card.classList.contains(defaultFilter) ? "flex" : "none";
+        });
+
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.classList.remove("active");
+            if (btn.getAttribute("data-filter") === defaultFilter) {
+                btn.classList.add("active");
+            }
+        });
+
+        document.querySelectorAll(".filter-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                let filter = button.getAttribute("data-filter");
+
+                document.querySelectorAll(".book-card").forEach(card => {
+                    card.style.display = (filter === "all" || card.classList.contains(filter)) ? "flex" : "none";
+                });
+
+                document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+            });
+        });
+    });
+    
+</script>
+
+
+<script>
+
+    document.querySelectorAll(".video-card.english1").forEach(card => card.style.display = "none");
+    document.querySelectorAll(".video-card.urdu-hindi").forEach(card => card.style.display = "block");
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            let filter = button.getAttribute("data-filter");
+
+            document.querySelectorAll(".video-card").forEach(card => {
+                card.style.display = (filter === "urdu-hindi" && card.classList.contains("urdu-hindi")) || 
+                                     (filter === "english1" && card.classList.contains("english1")) ? "block" : "none";
+            });
+
+            document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+        });
+    });
+</script>

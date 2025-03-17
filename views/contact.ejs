@@ -1,0 +1,259 @@
+<style>
+    :root {
+        --primary-color: #2C3E50;  
+        --secondary-color: #F2E3D5; 
+        --accent-color: #E8AA42;   
+        --bot-bg: #F8F9FA;
+        --text-dark: #333;
+        --text-light: #fff;
+    }
+    
+    
+    .contact-container,
+    .details-container,
+    .faq-container {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid var(--accent-color);
+        margin-bottom: 25px;
+    }
+    
+    .section-heading {
+        text-align: center;
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .contact-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-container label {
+        font-weight: bold;
+        color: var(--primary-color);
+        display: block;
+    }
+    
+    .contact-container input, 
+    .contact-container select, 
+    .contact-container textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid var(--primary-color);
+        border-radius: 8px;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+    
+    .contact-container input:focus, 
+    .contact-container textarea:focus,
+    .contact-container select:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0px 0px 8px var(--accent-color);
+    }
+    
+    .btn-custom {
+        background-color: var(--accent-color);
+        color: white;
+        font-weight: bold;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+    }
+    
+    .btn-custom:hover {
+        background-color: var(--primary-color);
+    }
+    
+    .details-container p {
+        text-align: center;
+        font-size: 16px;
+        color: var(--text-dark);
+    }
+    
+    .details-container a {
+        color: var(--primary-color);
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .details-container a:hover {
+        color: var(--accent-color);
+    }
+    
+    .faq-item {
+        background: var(--bot-bg);
+        padding: 12px;
+        margin-bottom: 10px;
+        border: 2px solid var(--accent-color);
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    
+    .faq-question {
+        font-weight: bold;
+        color: var(--primary-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .faq-icon {
+        font-size: 16px;
+    }
+    
+    .faq-answer {
+        display: none;
+        margin-top: 10px;
+        color: var(--text-dark);
+        font-size: 15px;
+    }
+    
+    .faq-answer.show {
+        display: block;
+        animation: fadeIn 0.3s ease-in;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+</style>
+
+<%- include("./partials/navbar.ejs") %>
+
+<%- include("./partials/header.ejs") %>
+
+<div class="container mt-4" style="width: 80%;">
+    <div class="contact-container">
+        <h2 class="section-heading">📩 Get in Touch with Noor-al-Huda Team</h2>
+
+        <form id="contactForm">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+                <option value="general">General Inquiry</option>
+                <option value="feedback">Feedback</option>
+                <option value="issue">Report an Issue</option>
+                <option value="collab">Collaboration Request</option>
+            </select>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+
+            <button type="submit" class="btn-custom">Send Message</button>
+        </form>
+
+        <p id="formMessage" style="display: none;"></p>
+    </div>
+
+    <style>
+        @media (max-width: 600px) {
+            .details-container {
+                max-width: 100%;
+                padding: 10px;
+            }
+        
+            .details-container p {
+                font-size: 12px; 
+            }
+        }
+        
+    </style>
+    <div class="details-container">
+        <h2 class="section-heading">📞 Contact Details</h2>
+        <p><b>Email:</b> <a href="mailto:mohdadnankhan.india@gmail.com">mohdadnankhan.india@gmail.com</a></p>
+    </div>
+
+    <div class="faq-container">
+        <h2 class="section-heading">📖 Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                How can I use Noor-al-Huda? <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                Noor-al-Huda is a complete platform for Islamic learning. You can explore Seerat Books, Videos, Hadith, Duas, quizzes, chatbot, and more through the website.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                Is Noor-al-Huda available in multiple languages? <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                Predominantly in English, but Noor-al-Huda provides content in English, Urdu, and Hindi to ensure accessibility for everyone.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                Can I contribute to Noor-al-Huda? <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                Absolutely! You can contribute by providing verified Islamic content or reporting any issue via the contact form.
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>
+
+<script>
+function toggleFAQ(element) {
+    let answer = element.nextElementSibling;
+    answer.classList.toggle("show");
+}
+
+document.getElementById("contactForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    let formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+    };
+
+    let formMessage = document.getElementById("formMessage");
+
+    try {
+        let response = await fetch("/submit-form", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        let result = await response.json();
+
+        if (result.success) {
+            formMessage.textContent = "✅ Your message has been sent successfully!";
+            formMessage.style.color = "green";
+            document.getElementById("contactForm").reset();
+        } else {
+            formMessage.textContent = "❌ Error: " + result.error;
+            formMessage.style.color = "red";
+        }
+    } catch (error) {
+        formMessage.textContent = "❌ Server error. Please try again later.";
+        formMessage.style.color = "red";
+    }
+
+    formMessage.style.display = "block";
+});
+</script>

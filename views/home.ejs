@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+<%- include("./partials/navbar.ejs") %>
+
+<div class="container-fluid quiz-container">
+    <div class="row justify-content-center">
+        <div class="col-12 position-relative text-center">
+            <img src="images/home.png" alt="Masjid Nabawi" class="img-fluid quiz-image">
+            <a href="./quiz" class="quiz-button">Test Your Understanding</a>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center mt-3 pt-3 mb-3 features">
+    <h1>What we Offer?</h1>
+    <div class="row mt-5">
+        <div class="col-lg-3">
+            <a href="./resources"><img src="images/logo.jpg" alt="Logo" class="rounded-circle"
+                width="140" height="140"></a>
+            <h2 class="fw-normal mt-3"><b>Seerat Resources</b></h2>
+            <p>Explore <b>collection of books</b> on the life and teachings of Prophet Muhammad (PBUH).</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="./quiz"><img src="images/logo.jpg" alt="Logo" class="rounded-circle"
+                width="140" height="140"></a>
+            <h2 class="fw-normal mt-3"><b>Quizzes</b></h2>
+            <p>Test your knowledge of <b>Seerah, Islamic history, and teachings</b> with engaging quizzes.</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="./ilmbot"><img src="images/logo.jpg" alt="Logo" class="rounded-circle"
+                width="140" height="140"></a>
+            <h2 class="fw-normal mt-3"><b>IlmBot</b></h2>
+            <p>Ask <b>Seerah-related questions</b> and get instant answers from IlmBot.</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="./history"><img src="images/logo.jpg" alt="Logo" class="rounded-circle"
+                width="140" height="140"></a>
+            <h2 class="fw-normal mt-3"><b>Historical Places</b></h2>
+            <p>Discover significant <b>Islamic landmarks</b> from the Prophet’s era.</p>
+        </div>
+    </div>
+</div>
+
+<div id="timeline-container" style="
+    width: 94%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 50px 0;
+    background: linear-gradient(135deg, #70a472, #64b88e); /* Soft green gradient */
+    border: 2px solid #C3E6B7; /* Light greenish border */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+">
+    <div id="timeline"></div>
+</div>
+
+<%- include("./partials/footer.ejs") %>
+<script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+<script src="script.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var timeline = new TL.Timeline('timeline', '/timeline.json');
+    });
+</script>

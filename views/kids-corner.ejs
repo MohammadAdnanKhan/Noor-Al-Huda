@@ -1,0 +1,279 @@
+
+<style>
+body {
+    background: #0F2417;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.duas-sunnah {
+    background: #0F2417;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border: 2px solid #c79c36;
+    border-radius: 10px;
+    width:75%;
+    margin: auto;
+}
+
+.duas-sunnah h2 {
+    color: #c79c36;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.duas-section, .sunnah-section {
+    background: #1B3B24;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    width: 350px;
+    height: 320px;
+    border: 1px solid #c79c36;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#dua-container, #sunnah-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 220px;
+}
+
+#dua-container::-webkit-scrollbar, #sunnah-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#dua-container::-webkit-scrollbar-thumb, #sunnah-container::-webkit-scrollbar-thumb {
+    background: #c79c36;
+    border-radius: 10px;
+}
+
+.duas-section h3, .sunnah-section h3 {
+    color: #f8c400;
+    font-size: 20px;
+}
+
+.arabic {
+    font-size: 18px;
+    font-weight: bold;
+    color: #c79c36;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #c79c36;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #f8c400;
+}
+
+button i {
+    margin: 0 5px;
+}
+
+.riddles-page {
+    background: #0F2417;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border: 2px solid #c79c36;
+    border-radius: 10px;
+    width:75%;
+    margin: auto;
+}
+
+.riddle-container .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.riddle-container button {
+    flex: 1;
+    margin: 0 5px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+</style>
+
+<%- include("./partials/navbar.ejs") %>
+
+<section class="duas-sunnah mt-3 mb-3">
+    <h2 class="section-title">Duas and Sunnah Practices</h2>
+
+    <div class="content">
+        <!-- Dua Section -->
+        <div class="duas-section">
+            <h3>Duas</h3>
+            <div id="dua-container">
+                <h4 id="dua-title"></h4>
+                <p class="arabic" id="dua-arabic"></p>
+                <p><strong>Transliteration:</strong> <span id="dua-transliteration"></span></p>
+                <p><strong>Translation:</strong> <span id="dua-translation"></span></p>
+            </div>
+            <div class="button-group">
+                <button onclick="prevDua()"><i class="fas fa-chevron-left"></i> Previous</button>
+                <button onclick="nextDua()">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Sunnah Section -->
+        <div class="sunnah-section">
+            <h3>Sunnah Practices</h3>
+            <div id="sunnah-container">
+                <h4 id="sunnah-title"></h4>
+                <p id="sunnah-description"></p>
+            </div>
+            <div class="button-group">
+                <button onclick="prevSunnah()"><i class="fas fa-chevron-left"></i> Previous</button>
+                <button onclick="nextSunnah()">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="riddles-page">
+    <h2 class="section-title">Islamic Riddles</h2>
+
+    <div class="riddle-container">
+        <p id="riddle-text"></p>
+        <button id="show-answer-btn" onclick="showAnswer()">Show Answer</button>
+        <p id="riddle-answer" class="hidden"></p>
+        
+        <button id="next-riddle-btn" class="mt-1" onclick="nextRiddle()">Next Riddle</button>
+    </div>
+</section>
+
+    <!-- For dua, sunnah and riddle section -->
+    <script>
+    let duas = [];
+    let sunnah = [];
+    let duaIndex = 0;
+    let sunnahIndex = 0;
+
+    fetch('/kids.json')
+        .then(response => response.json())
+        .then(data => {
+            duas = data.duas;
+            sunnah = data.sunnah;
+            displayDua();
+            displaySunnah();
+        })
+        .catch(error => console.error("Error loading JSON:", error));
+
+    function displayDua() {
+        document.getElementById("dua-title").innerText = duas[duaIndex].title;
+        document.getElementById("dua-arabic").innerText = duas[duaIndex].arabic;
+        document.getElementById("dua-transliteration").innerText = duas[duaIndex].transliteration;
+        document.getElementById("dua-translation").innerText = duas[duaIndex].translation;
+    }
+
+    function nextDua() {
+        duaIndex = (duaIndex + 1) % duas.length;
+        displayDua();
+    }
+
+    function prevDua() {
+        duaIndex = (duaIndex - 1 + duas.length) % duas.length;
+        displayDua();
+    }
+
+    function displaySunnah() {
+        document.getElementById("sunnah-title").innerText = sunnah[sunnahIndex].title;
+        document.getElementById("sunnah-description").innerText = sunnah[sunnahIndex].description;
+    }
+
+    function nextSunnah() {
+        sunnahIndex = (sunnahIndex + 1) % sunnah.length;
+        displaySunnah();
+    }
+
+    function prevSunnah() {
+        sunnahIndex = (sunnahIndex - 1 + sunnah.length) % sunnah.length;
+        displaySunnah();
+    }
+    let riddles = [
+    { question: "I am always with you, yet you can never see me. I record everything you do. Who am I?", answer: "The angels on your shoulders (Kiraman Katibin)" },
+    { question: "I am a pillar of Islam, performed five times a day. What am I?", answer: "Salah (Prayer)" },
+    { question: "I was the first house of worship built for mankind. What am I?", answer: "Kaaba" },
+    { question: "I was swallowed by a whale and later became a prophet again. Who am I?", answer: "Prophet Yunus (AS)" },
+    { question: "I split the sea with Allah’s permission to save my people. Who am I?", answer: "Prophet Musa (AS)" },
+    { question: "I am the month in which the Quran was revealed. What am I?", answer: "Ramadan" },
+    { question: "I am the book that Allah revealed to Prophet Muhammad (PBUH). What am I?", answer: "The Quran" },
+    { question: "I am the angel who brought revelation to the Prophets. Who am I?", answer: "Angel Jibreel (Gabriel)" },
+    { question: "I was created from fire and refused to bow to Adam. Who am I?", answer: "Iblis (Shaitan)" },
+    { question: "I am the special night in Ramadan that is better than a thousand months. What am I?", answer: "Laylatul Qadr (The Night of Decree)" },
+    { question: "I am the city where Prophet Muhammad (PBUH) was born. What am I?", answer: "Makkah" },
+    { question: "I am the city where Prophet Muhammad (PBUH) migrated to. What am I?", answer: "Madinah" },
+    { question: "I was commanded to build the Ark and save the believers from the flood. Who am I?", answer: "Prophet Nuh (Noah) (AS)" },
+    { question: "I was thrown into a fire, but Allah saved me. Who am I?", answer: "Prophet Ibrahim (AS)" },
+    { question: "I am the well in Makkah that appeared to save Ismail (AS) and his mother. What am I?", answer: "Zamzam" },
+    { question: "I am the festival that marks the end of Ramadan. What am I?", answer: "Eid al-Fitr" },
+    { question: "I am the festival of sacrifice celebrated by Muslims. What am I?", answer: "Eid al-Adha" },
+    { question: "I am the direction Muslims face when they pray. What am I?", answer: "Qibla (Kaaba in Makkah)" },
+    { question: "I am the month in which Hajj is performed. What am I?", answer: "Dhul-Hijjah" },
+    { question: "I am the Prophet known for my patience during suffering. Who am I?", answer: "Prophet Ayyub (AS)" },
+    { question: "I was the first man and the first Prophet. Who am I?", answer: "Prophet Adam (AS)" },
+    { question: "I was the youngest wife of Prophet Muhammad (PBUH). Who am I?", answer: "Aisha (RA)" },
+    { question: "I am the battle where Prophet Muhammad (PBUH) and his companions defeated a larger army with Allah’s help. What am I?", answer: "Battle of Badr" },
+    { question: "I am the cave where Prophet Muhammad (PBUH) received his first revelation. What am I?", answer: "Cave Hira" },
+    { question: "I am the night journey where Prophet Muhammad (PBUH) ascended to the heavens. What am I?", answer: "Isra and Miraj" },
+    { question: "I am the bridge that every soul must cross on the Day of Judgment. What am I?", answer: "As-Sirat (The Bridge over Hellfire)" },
+];
+
+
+    let currentRiddleIndex = 0;
+
+    function displayRiddle() {
+        let riddle = riddles[currentRiddleIndex];
+        document.getElementById("riddle-text").innerText = riddle.question;
+        document.getElementById("riddle-answer").innerText = riddle.answer;
+        document.getElementById("riddle-answer").classList.add("hidden");
+        document.getElementById("show-answer-btn").style.display = "inline-block";
+    }
+
+    function showAnswer() {
+        document.getElementById("riddle-answer").classList.remove("hidden");
+        document.getElementById("show-answer-btn").style.display = "none";
+    }
+
+    function nextRiddle() {
+        currentRiddleIndex = (currentRiddleIndex + 1) % riddles.length;
+        displayRiddle();
+    }
+
+    displayRiddle();
+</script>
+
+
+<%- include("./partials/footer.ejs") %>

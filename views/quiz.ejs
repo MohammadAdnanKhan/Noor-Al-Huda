@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seerat Quiz</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .outer {
+        width: 100%;
+        height: 91vh;
+        background: url('images/img.jpg'); 
+        background-size: cover;  
+        background-position: center; 
+        background-repeat: no-repeat; 
+        color: #333;
+        display: grid;
+        place-items: center;
+    }
+    
+    .quiz-box {
+        width: 80%;
+        max-width: 850px;
+        padding: 30px;
+        text-align: center;
+        display: none;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid #d4af37; 
+    }
+
+    .quiz-box h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+        color: #0a6847; 
+        text-decoration: underline;
+        text-underline-offset: 8px;
+    }
+    
+    .quiz-box .question {
+        font-size: 24px;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+    
+    .quiz-box .choices {
+        margin-top: 20px;
+    }
+    
+    .choice {
+        font-size: 20px;
+        background-color: #f0f9f2; 
+        color: #0a6847; 
+        margin: 10px auto;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: left;
+        width: 60%;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        transform: translateY(50%);
+        animation: fade-in 0.5s ease forwards;
+    }
+    
+    .choice:hover {
+        background-color: #d1e7d3; 
+    }
+    
+    .choice.selected {
+        background-color: #d4af37; 
+        color: white;
+        font-weight: bold;
+    }
+    
+    .btn1 {
+        width: 60%;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 12px 20px;
+        margin: 20px auto 0 auto;
+        background-color: #0a6847; 
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+    
+    .btn1:hover {
+        background-color: #08780c;
+    }
+    
+    .scoreCard {
+        font-size: 24px;
+        margin-top: 20px;
+        color: #0a6847;
+    }
+    
+    .alert {
+        background-color: #5d9b63;
+        border-radius: 8px;
+        width: 100%;
+        padding: 12px;
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+    
+    .startBtn {
+        width: 15%;
+        padding-block: 20px;
+        text-align: center;
+        background-color: rgba(212, 175, 55, 0.80);
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+    
+    .startBtn:hover {
+        background-color: #b38f28; 
+    }
+    
+    .timer {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background-color: #f0f9f2;
+        border: 2px solid #0a6847;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: pulse 1s ease-in-out infinite;
+        color: #0a6847;
+    }
+    .footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: rgba(10, 104, 71, 0.9); /* Dark greenish with transparency */
+        padding: 10px 0;
+        text-align: center;
+    }
+    
+    .home-btn {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 12px 24px;
+        background-color: #d4af37; /* Gold color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+    
+    .home-btn:hover {
+        background-color: #b38f28; /* Darker gold on hover */
+    }
+    
+    
+    @media screen and (max-width: 600px) {
+        .home-btn {
+            width: 80%;
+            font-size: 16px;
+            padding: 10px;
+        }
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @media screen and (max-width: 900px) {
+        .quiz-box {
+            width: 100%;
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .quiz-box h1 {
+            font-size: 28px;
+        }
+        .quiz-box .question {
+            font-size: 22px;
+        }
+    
+        .timer {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+        }
+    
+        .startBtn {
+            width: 50%;
+        }
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="outer">
+    <div class="alert">Alert</div>
+    <div class="btn btn1 startBtn">Test Your Knowlege!</div>
+    <div class="container quiz-box">
+        <h1>How Well Do You Know Prophet Muhammad (SAW)?</h1>
+        <div class="question"></div>
+        <div class="choices"></div>
+        <button class="btn btn1 nextBtn">Next</button>
+        <div class="scoreCard"></div>
+        <div class="timer"></div>
+    </div>
+</div>
+
+<div class="mt-5">
+<footer class="footer">
+    <button class="home-btn" onclick="window.location.href='/'">Back to Home</button>
+</footer>
+</div>
+</body>
+    
+<script>
+const container = document.querySelector('.container');
+const questionBox = document.querySelector('.question');
+const choicesBox = document.querySelector('.choices');
+const nextBtn = document.querySelector('.nextBtn');
+const scoreCard = document.querySelector('.scoreCard');
+const alert = document.querySelector('.alert');
+const startBtn = document.querySelector('.startBtn');
+const timer = document.querySelector('.timer');
+
+let quiz = [];
+let selectedQuestions = [];
+let currentQuestionIndex = 0;
+let score = 0;
+let quizOver = false;
+let timeLeft = 15;
+let timerID = null;
+
+// Fetch Questions from JSON
+const fetchQuestions = async () => {
+    try {
+        const response = await fetch('quiz.json');
+        quiz = await response.json();
+        selectRandomQuestions();
+        startQuiz();
+    } catch (error) {
+        console.error("Error fetching questions:", error);
+    }
+};
+
+// Select 5 Random Questions Without Repetition
+const selectRandomQuestions = () => {
+    const shuffled = [...quiz].sort(() => 0.5 - Math.random());
+    selectedQuestions = shuffled.slice(0, 5);
+};
+
+// Display Questions
+const showQuestions = () => {
+    if (currentQuestionIndex >= selectedQuestions.length) {
+        showScore();
+        return;
+    }
+
+    const questionDetails = selectedQuestions[currentQuestionIndex];
+    questionBox.textContent = questionDetails.question;
+    choicesBox.innerHTML = "";
+
+    questionDetails.choices.forEach(choice => {
+        const choiceDiv = document.createElement('div');
+        choiceDiv.textContent = choice;
+        choiceDiv.classList.add('choice');
+        choicesBox.appendChild(choiceDiv);
+
+        choiceDiv.addEventListener('click', () => {
+            document.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+            choiceDiv.classList.add('selected');
+        });
+    });
+
+    resetTimer();
+};
+
+// Check Answer
+const checkAnswer = () => {
+    const selectedChoice = document.querySelector('.choice.selected');
+    if (!selectedChoice) {
+        displayAlert("Please select an answer!");
+        return;
+    }
+
+    if (selectedChoice.textContent === selectedQuestions[currentQuestionIndex].answer) {
+        displayAlert("Correct Answer!");
+        score++;
+    } else {
+        displayAlert(`Wrong Answer!! The correct answer is: ${selectedQuestions[currentQuestionIndex].answer}`);
+    }
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < selectedQuestions.length) {
+        showQuestions();
+    } else {
+        stopTimer();
+        showScore();
+    }
+};
+
+// Show Score
+const showScore = () => {
+    questionBox.textContent = "Quiz Completed!";
+    choicesBox.innerHTML = "";
+    scoreCard.textContent = `You Scored ${score} out of ${selectedQuestions.length}!`;
+    displayAlert("Great Job! 🎉");
+    nextBtn.textContent = "Play Again";
+    quizOver = true;
+    timer.style.display = "none";
+};
+
+// Show Alert
+const displayAlert = (msg) => {
+    alert.style.display = "block";
+    alert.textContent = msg;
+    setTimeout(() => {
+        alert.style.display = "none";
+    }, 2000);
+};
+
+// Timer Functions
+const resetTimer = () => {
+    clearInterval(timerID);
+    timeLeft = 15;
+    timer.textContent = timeLeft;
+    timer.style.display = "flex";
+
+    timerID = setInterval(() => {
+        timeLeft--;
+        timer.textContent = timeLeft;
+        if (timeLeft === 0) {
+            displayAlert("Time's Up! Moving to the next question...");
+            currentQuestionIndex++;
+            if (currentQuestionIndex < selectedQuestions.length) {
+                showQuestions();
+            } else {
+                showScore();
+            }
+        }
+    }, 1000);
+};
+
+const stopTimer = () => {
+    clearInterval(timerID);
+};
+
+// Start Quiz
+const startQuiz = () => {
+    timeLeft = 15;
+    timer.style.display = "flex";
+    currentQuestionIndex = 0;
+    score = 0;
+    quizOver = false;
+    showQuestions();
+};
+
+// Event Listeners
+startBtn.addEventListener('click', () => {
+    startBtn.style.display = "none";
+    container.style.display = "block";
+    fetchQuestions();
+});
+
+nextBtn.addEventListener('click', () => {
+    if (quizOver) {
+        nextBtn.textContent = "Next";
+        scoreCard.textContent = "";
+        fetchQuestions();
+    } else {
+        checkAnswer();
+    }
+});
+
+</script>

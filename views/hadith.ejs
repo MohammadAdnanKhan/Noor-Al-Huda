@@ -1,0 +1,152 @@
+<style>
+    body {
+        background: linear-gradient(to right, #e3ffe7, #d9e7ff);
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .hadith-container {
+        max-width: 90%;
+        margin: 50px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        border: 3px solid gold; 
+    }
+
+    h2 {
+        color: #085f47;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .custom-btn {
+        margin: 8px;
+        font-size: 16px;
+        padding: 12px 20px;
+        background: #0a6847;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .custom-btn:hover {
+        background: #085f47;
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-btn.urdu {
+        background: #146c43; 
+    }
+
+    .custom-btn.urdu:hover {
+        background: #0f5132; 
+    }
+
+    #hadith-text {
+        font-size: 20px;
+        color: #222;
+        font-style: italic;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    #hadith-reference {
+        font-size: 17px;
+        color: #555;
+        margin-top: 12px;
+        font-weight: bold;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .custom-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+        }
+    }
+</style>
+
+
+    <%- include("./partials/navbar.ejs") %>
+
+
+    <div class="container"> 
+        <div class="hadith-container" style="background-color: rgb(178, 226, 168);" >
+            <h2 style="color: #0a6847;">📖 Daily Hadith</h2>
+            <p id="hadith-text">Click a button to fetch a hadith in English or in Urdu.</p>
+            <p id="hadith-reference"></p>
+
+            <div class="btn-container">
+                <button class="custom-btn" onclick="fetchHadith('eng-bukhari', 7500)">📚 Sahih Bukhari</button>
+                <button class="custom-btn" onclick="fetchHadith('eng-muslim', 7500)">📚 Sahih Muslim</button>
+                <button class="custom-btn" onclick="fetchHadith('eng-tirmidhi', 3900)">📚 Jami At-Tirmidhi</button>
+                <button class="custom-btn" onclick="fetchHadith('eng-ibnmajah', 4300)">📚 Sunan Ibn Majah</button>
+                <button class="custom-btn" onclick="fetchHadith('eng-abudawud', 5200)">📚 Sunan Abu Dawud</button>
+            </div>
+            
+            <hr>
+            
+            <div class="btn-container">
+                <button class="custom-btn urdu" onclick="fetchHadith('urd-bukhari', 7500)">📚 صحیح بخاری</button>
+                <button class="custom-btn urdu" onclick="fetchHadith('urd-muslim', 7500)">📚 صحیح مسلم</button>
+                <button class="custom-btn urdu" onclick="fetchHadith('urd-tirmidhi', 3900)">📚 جامع الترمذی</button>
+                <button class="custom-btn urdu" onclick="fetchHadith('urd-ibnmajah', 4300)">📚 سنن ابن ماجہ</button>
+                <button class="custom-btn urdu" onclick="fetchHadith('urd-abudawud', 5200)">📚 سنن ابوداؤد</button>
+            </div>      
+        </div>
+    </div>
+
+    <p style="font-size: 12px; color: #666; text-align: center; margin: 20px auto; width: 70%;">
+        Hadiths on this page are sourced from the 
+        <a href="https://github.com/fawazahmed0/hadith-api" target="_blank" style="color: rgb(54, 44, 3); text-decoration: none;">
+            Hadith API
+        </a>. 
+        Special thanks to the developers for making this resource available. If you encounter any issues, please refer to the official API repository.
+    </p>
+    
+    
+<%- include("./partials/footer.ejs") %>
+
+
+    <script>
+        async function fetchHadith(bookName, maxNumber) {
+            const randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+            const apiUrl = `https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/${bookName}/${randomNumber}.json`;
+
+            try {
+                document.getElementById("hadith-text").textContent = "Fetching hadith...";
+                document.getElementById("hadith-reference").textContent = "";
+
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+                const data = await response.json();
+
+                if (data.hadiths && data.hadiths.length > 0) {
+                    const hadith = data.hadiths[0]; 
+                    document.getElementById("hadith-text").textContent = hadith.text;
+                    document.getElementById("hadith-reference").textContent = `📚 ${data.metadata.name} - Hadith ${hadith.hadithnumber}`;
+                } else {
+                    document.getElementById("hadith-text").textContent = "No hadith found.";
+                }
+            } catch (error) {
+                console.error("Error fetching hadith:", error);
+                document.getElementById("hadith-text").textContent = "Failed to fetch hadith. Please try again.";
+            }
+        }
+    </script>
+

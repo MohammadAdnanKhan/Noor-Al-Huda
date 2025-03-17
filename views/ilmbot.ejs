@@ -1,0 +1,398 @@
+<style>
+    :root {
+        --primary-color: #2C3E50;  
+        --secondary-color: #F2E3D5; 
+        --accent-color: #E8AA42;   
+        --bot-bg: #F8F9FA;         
+        --user-bg: #2C3E50;        
+        --text-dark: #333;
+        --text-light: #fff;
+    }
+    
+    body {
+        background-color: var(--secondary-color);
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .chat-container {
+        max-width: 600px;
+        height: 80vh;
+        margin: 40px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        border: 2px solid var(--accent-color);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .chat-box {
+        flex: 1;
+        overflow-y: auto;
+        border: 2px solid var(--accent-color);
+        padding: 15px;
+        border-radius: 10px;
+        background-color: var(--bot-bg);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        scroll-behavior: smooth;
+    }
+    
+    .chat-box::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .chat-box::-webkit-scrollbar-thumb {
+        background-color: var(--accent-color);
+        border-radius: 5px;
+    }
+    
+    .message {
+        padding: 12px;
+        border-radius: 10px;
+        max-width: 75%;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        font-size: 15px;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    .user-message {
+        background-color: var(--user-bg);
+        color: var(--text-light);
+        align-self: flex-end;
+        border-radius: 18px 18px 0 18px;
+        padding: 10px 14px;
+    }
+    
+    .bot-message {
+        background-color: white;
+        color: var(--text-dark);
+        border-radius: 18px 18px 18px 0;
+        align-self: flex-start;
+        padding: 10px 14px;
+        border-left: 4px solid var(--accent-color);
+    }
+    
+    .bot-heading {
+        font-weight: bold;
+        font-size: 22px;
+        color: var(--primary-color);
+        text-align: center;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    
+    .bot-heading::after {
+        content: "";
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+        display: block;
+        margin: 5px auto;
+        border-radius: 5px;
+    }
+    
+    .loading {
+        display: none;
+        font-style: italic;
+        color: #777;
+    }
+    
+    .input-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .input-group input {
+        flex: 1;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 15px;
+        border: 2px solid var(--primary-color);
+        outline: none;
+        transition: 0.3s;
+    }
+    
+    .input-group input:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0px 0px 8px var(--accent-color);
+    }
+    
+  .btn-custom {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    box-shadow: 0px 0px 8px var(--accent-color);
+}
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 768px) {
+        .chat-container {
+            width: 90%;
+            height: 75vh;
+            padding: 15px;
+        }
+    }    
+</style>
+<style>
+    .faq-container {
+        width:75%;
+        margin: 40px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        border: 2px solid var(--accent-color);
+    }
+
+    .faq-heading {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--accent-color);
+        padding: 10px 0;
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        color: var(--primary-color);
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background: var(--bot-bg);
+    }
+
+    .faq-answer {
+        display: none;
+        padding: 10px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .faq-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+        display: block;
+    }
+
+    .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+    }
+</style>
+
+<%- include("./partials/navbar.ejs") %>
+
+<div class="chat-container">
+    <h3 class="bot-heading">📖 IlmBot - Ask About Seerat</h3>
+    
+    <div class="chat-box" id="chat-box"></div>
+    <p id="loading" class="loading text-center">⏳ IlmBot is thinking...</p>
+
+    <div class="input-group">
+        <input type="text" id="user-input" class="form-control" placeholder="Type your question..." onkeypress="handleEnter(event)">
+        <button class="btn btn-custom" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+<p style="font-size: 12px; color: #666; text-align: center; margin: 20px auto; max-width: 70%;">
+    You can ask up to <strong>10 questions every 15 minutes</strong>. This limit helps maintain system stability and prevents unexpected issues.
+</p>
+
+<div class="faq-container">
+    <h3 class="faq-heading">📖 IlmBot FAQs</h3>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+            What is IlmBot and how does it work?
+            <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            IlmBot is a <code><b>Retrieval Bot</b></code>, not an LLM-based chatbot. It uses <code><b>Retrieval-Augmented Generation (RAG)</b></code>
+            to fetch <b>authentic information</b> from a structured dataset.  
+            A brief summary is generated using <code><b>Gemini</b></code>, but the detailed responses come directly from verified sources.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+            Is the information provided by IlmBot 100% authentic?
+            <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            IlmBot provides <b>two parts</b> in its response:  
+            - A <b>brief summary</b>, generated by <code><b>Gemini</b></code>, to give a quick overview.  
+            - A <b>detailed response</b>, which comes directly from a <b>verified dataset</b>, ensuring accuracy and authenticity.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+            Can I ask IlmBot any question about Seerat?
+            <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            IlmBot specializes in <b>Seerat-related questions</b>. It retrieves answers from a structured dataset, ensuring  
+            <b>reliable</b> and <b>non-speculative</b> responses. <code><b>It does not generate random or hypothetical answers.</b></code>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+            Is IlmBot a replacement for traditional research?
+            <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            No, IlmBot is designed as a <b><code>research assistant</code></b>, not a substitute for scholarly study.  
+            It helps users find <b>quick and relevant information</b> but should be used alongside in-depth reading from trusted Islamic books.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+            How can I trust the sources used by IlmBot?
+            <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            IlmBot retrieves information <b>only from a verified dataset</b> compiled from trusted Islamic sources.  
+            Users can <b>cross-check the details</b> with reference books and scholars for further verification. Or can contact the developers from contact page.
+        </div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+            Why is Ilmbot providing answers that were not asked?
+            <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            Ilmbot is essentially a <b><code>retrieval chatbot</code></b>, meaning it retrieves data from trained documents rather than generating content. 
+            This approach ensures authenticity. However, the retrieved content is <b><code>enhanced by Gemini</code></b> (in the first paragraph). 
+            As a result, sometimes the second paragraph and the heading may be irrelevant.
+        </div>
+    </div>    
+</div>
+
+<script>
+    function toggleFAQ(element) {
+        let parent = element.parentElement;
+        parent.classList.toggle("active");
+    }
+</script>
+
+<%- include("./partials/footer.ejs") %>
+
+<script>
+    const apiUrl = "http://127.0.0.1:8000/chat/"; 
+
+    document.getElementById("user-input").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+    
+    async function sendMessage() {
+        const userInputElement = document.getElementById("user-input");
+        const userMessage = userInputElement.value.trim();
+        
+        if (!userMessage) return;
+    
+        appendMessage(userMessage, "user");
+    
+        document.getElementById("loading").style.display = "block";
+        userInputElement.value = "";
+    
+        try {
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: userMessage })
+            });
+    
+            const responseText = await response.text();  
+            console.log("Raw API Response:", responseText);
+    
+            if (!response.ok) {
+                throw new Error(`Server Error: ${response.status}`);
+            }
+    
+            const data = JSON.parse(responseText);
+            document.getElementById("loading").style.display = "none";
+    
+            displayBotResponse(data);
+    
+        } catch (error) {
+            document.getElementById("loading").style.display = "none";
+            appendMessage(`⚠️ Error: ${error.message}`, "bot");
+            console.error("Fetch Error:", error);
+        }
+    }
+    
+    function displayBotResponse(data) {
+        const chatBox = document.getElementById("chat-box");
+    
+        const botDiv = document.createElement("div");
+        botDiv.classList.add("bot-message");
+    
+        let responseHTML = "";
+    
+        if (data.heading) {
+            responseHTML += `<p class="bot-heading"><strong>${data.heading}</strong></p>`;
+        }
+    
+        if (data.enhanced_response) {
+            responseHTML += `<p><strong>Enhanced by Ilmbot:</strong> ${data.enhanced_response}</p>`;
+        }
+    
+        if (data.retrieved_text) {
+            responseHTML += `<p><strong>Retrieved from trained data:</strong> ${data.retrieved_text}</p>`;
+        }
+    
+        botDiv.innerHTML = responseHTML;
+        chatBox.appendChild(botDiv);
+    
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    function appendMessage(text, sender) {
+        const chatBox = document.getElementById("chat-box");
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add(sender === "user" ? "user-message" : "bot-message");
+        messageDiv.innerHTML = text;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+</script>
+
+</body>
+</html>

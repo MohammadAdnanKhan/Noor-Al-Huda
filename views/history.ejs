@@ -1,0 +1,330 @@
+<style>
+    /* Container */
+    .gallery-container {
+        max-width: 90%;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Gallery Grid */
+    .gallery-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .gallery-item {
+        flex: 0 0 calc(33.333% - 15px);
+        position: relative;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease, opacity 0.3s;
+    }
+
+    /* Hover Effect */
+    .gallery-item:hover img {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+
+    /* Image Overlay */
+    .gallery-item .overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+        opacity: 1;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        max-width: 600px;
+        margin: auto;
+        position: relative;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .modal img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    /* Close Button */
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+        padding: 10px;
+    }
+
+    .close:hover {
+        color: red;
+    }
+
+    /* Next & Previous Buttons */
+    .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        color: white;
+        background: rgba(0,0,0,0.7);
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+    .modal-nav:hover {
+        background: rgba(0,0,0,0.9);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .buttons {
+        margin-top: 20px;
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .view-more, .view-less{
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 5px;
+    }
+    
+    .view-more{
+        background: #0a6847; 
+        color: white;
+    }
+    
+    .view-less {
+        background: #b33c2e; 
+        color: white;
+    }
+    
+    .view-more:hover {
+        background: #0c7a55; 
+        transform: scale(1.05);
+    }
+    
+    .view-less:hover {
+        background: #962e24; 
+        transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-item { flex: 0 0 calc(100% - 15px); }
+        .modal-content { max-width: 90%; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .gallery-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+    
+    .gallery-header h2 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+    
+    .gallery-header p {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .virtual-tour {
+        width: 90%;
+        text-align: center;
+        margin: 50px auto;
+        padding: 20px;
+        background: #0F2417; 
+        border: 2px solid #c79c36; 
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        color: #ffffff;
+    } 
+
+.virtual-tour iframe {
+    border: none;
+    border-radius: 8px;
+}
+</style>
+
+<%- include("./partials/navbar.ejs") %>
+<div class="gallery-header">
+    <h2>Explore the Sacred Sites</h2>
+    <p>Click on an image to learn about its historical and spiritual significance. Use the arrows to navigate through the collection and uncover the stories behind these sacred places.</p>
+</div>
+
+<div class="gallery-container">
+    <div class="gallery-wrapper"></div>
+
+    <div class="btn-container">
+        <button class="view-more" onclick="loadMoreImages()">View More</button>
+        <button class="view-less" onclick="loadLessImages()">View Less</button>
+    </div>
+    
+</div>
+
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Historical Place">
+        <h3 id="modalTitle">Place Title</h3>
+        <p id="modalDescription">Place description goes here.</p>
+        <span class="modal-nav prev" onclick="prevImage()">❮</span>
+        <span class="modal-nav next" onclick="nextImage()">❯</span>
+    </div>
+</div>
+
+<section class="virtual-tour">
+    <h2>🕌 3D Virtual Tour of Masjid Al-Nabawi</h2>
+    <p>Experience Madinah like never before with this official <code>3D interactive map</code> provided by the <code>Kingdom of Saudi Arabia</code>. You can select the location from the above dropdown menu and can view the beautiful loactions inside Masjid Al-Nabawi(The Prophet's Mosque).</p>
+    <iframe src="https://vr.qurancomplex.gov.sa/msq/" width="90%" height="80%vh"></iframe>
+    <p><b>Credit:</b> This virtual experience is officially provided by the <code>Kingdom of Saudi Arabia</code>.</p>
+</section>
+
+<%- include("./partials/footer.ejs") %>
+
+<script>
+    const images = [
+        { src: "Historical/2windows.jpg", title: "2-Windows", description: "Here were the 2 windows that mark the house of a woman who used to throw trash on Prophet Muhammad ﷺ whenever he passed by. Despite her hostility, the Prophet ﷺ never retaliated. One day, when she fell ill, he visited her out of kindness. Touched by his mercy, she later embraced Islam. This place stands as a reminder of his unmatched patience and compassion. Such was his character." },
+        { src: "Historical/ibrahim.jpg", title: "Grave of Ibrahim, Son of Prophet", description: "Ibrahim, the beloved son of Prophet Muhammad ﷺ, passed away as a toddler. The Prophet ﷺ, though deeply saddened, accepted Allah’s will, saying, \"The eyes shed tears, the heart grieves, but we say only what pleases our Lord.\"" },
+        { src: "Historical/house.jpg", title: "House of Prophet ", description: "This was the birthplace and early home of Prophet Muhammad ﷺ in Makkah. It is now transformed into a library, preserving its historical significance" },
+        { src: "Historical/splittingmoon.jpg", title: "Jabal al-Noor – The Mountain of the Moon Splitting", description: "This mountain is associated with the miraculous event when Prophet Muhammad ﷺ, by the will of Allah, split the moon into two. The event was witnessed by many, including Cheraman Perumal, the King of Kerala, who later embraced Islam after learning about it." },
+        { src: "Historical/hira.jpg", title: "Ghar-e-Hira", description: "The cave in Jabal al-Noor where Prophet Muhammad ﷺ received the first revelation from Angel Jibreel: \"Read in the name of your Lord who created. He created man from a clot. Read, and your Lord is the Most Generous—Who taught by the pen—taught man what he did not know.\" (Qur'an 96:1-5)" },
+        { src: "Historical/thawr.jpg", title: "Ghar-e-Thawr", description: "The cave in Jabal Thawr where Prophet Muhammad ﷺ and Abu Bakr (RA) hid during the Hijrah. A spider’s web and a pigeon’s nest miraculously concealed them from Quraysh." },
+        { src: "Historical/plantedbysaw.jpg", title: "Dates Orchard planted by Rasool Allah", description: " A historic orchard in Madinah, planted by Prophet Muhammad ﷺ, which still exists today." },
+        { src: "Historical/meraj.jpg", title: "The Pillar of Mi'raj", description: "A distinct dark-colored pillar in Masjid al-Haram marks the spot from where Prophet Muhammad ﷺ ascended to the heavens during Isra wal Mi'raj. Unlike the other light-colored pillars, this one stands as a reminder of that miraculous night journey." },
+        { src: "Historical/quba.jpg", title: "Masjid Quba", description: "The first mosque built in Islam, established by Prophet Muhammad ﷺ in Madinah. It is highly virtuous, as he said:\"Whoever performs ablution at home and then prays in Masjid Quba, he will receive the reward of an Umrah.\" (Tirmidhi)" },
+        { src: "Historical/qiblatain.png", title: "Masjid Qiblatain", description: "The mosque where the Qibla was divinely changed from Masjid al-Aqsa to Masjid al-Haram while the Prophet ﷺ was leading prayer. This historic moment symbolized the completion of Islamic identity." },
+        { src: "Historical/uhadfull.jpg", title: "Mount Uhud (Full View)", description: "The site of the Battle of Uhud (625 CE), where the Muslims fought against the Quraysh. The mountain holds deep significance as Prophet Muhammad ﷺ said:\"Uhud is a mountain that loves us, and we love it.\" (Sahih Bukhari)" },
+        { src: "Historical/uhadarchers.jpg", title: "Mount Uhud - Archers' Hill (Jabal al-Rumah)", description: "This small hill was where Prophet Muhammad ﷺ stationed 50 archers during the Battle of Uhud, instructing them not to leave their position. When they descended early, the Quraysh forces, led by Khalid ibn al-Walid, launched a surprise attack, turning the tide of battle. This event serves as a lesson in discipline and obedience in Islam." },
+        { src: "Historical/uhadmap.jpg", title: "Battle of Uhud Map", description: "A strategic map showing how Khalid ibn al-Walid led the Quraysh cavalry around the mountain to ambush the Muslims from behind, changing the course of the battle." },
+        { src: "Historical/jannatulmala.jpg", title: "Jannat al-Mu'alla", description: "One of the holiest graveyards in Islam, where many of the Prophet’s ﷺ family members and companions are buried, including his mother Amina, grandfather Abdul Muttalib, and wife Khadijah (RA)." },
+        { src: "Historical/baqi.jpg", title: "Jannat al-Baqi", description: "Jannat al-Baqi is the main cemetery of Madinah, where many of the Prophet Muhammad’s ﷺ family members, companions, and scholars are buried. Among them are Hazrat Uthman ibn Affan (RA), Hazrat Fatimah (RA), Hazrat Hasan ibn Ali (RA), and the Mothers of the Believers. It is considered one of the holiest burial sites in Islam, visited by millions seeking prayers and reflection." },
+        { src: "Historical/hudaybiyyah.jpg", title: "Masjid Al-Hudaybiyah", description: "Located near Makkah, this historic mosque marks the site where the Treaty of Hudaybiyah was signed between Prophet Muhammad ﷺ and the Quraysh in 6 AH (628 CE), leading to a peaceful agreement that paved the way for the conquest of Makkah." },
+        { src: "Historical/arafat.jpg", title: "Mount Arafat (Jabl e-Rehmat)", description: "Known as Jabal al-Rahmah (The Mount of Mercy), it is where Prophet Muhammad ﷺ delivered his Farewell Sermon during his last Hajj. Pilgrims gather here on the 9th of Dhul-Hijjah, making standing at Arafat (Wuquf) the most essential pillar of Hajj." },
+        { src: "Historical/roza.jpg", title: "The Prophet's Roza", description: "The Green Dome marks the sacred chamber where Prophet Muhammad ﷺ, Hazrat Abu Bakr (RA), and Hazrat Umar (RA) are buried." },
+        { src: "Historical/rozagate.jpg", title: "Roza Gate", description: "This is the inner entrance to the Prophet’s ﷺ burial chamber, where visitors can see the intricate gold and silver grills." },
+       ];
+
+    let currentIndex = 0;
+    let imagesLoaded = 6; 
+
+    const galleryWrapper = document.querySelector(".gallery-wrapper");
+
+    function loadImages(limit) {
+        galleryWrapper.innerHTML = "";
+        for (let i = 0; i < limit && i < images.length; i++) {
+            const div = document.createElement("div");
+            div.classList.add("gallery-item");
+            div.innerHTML = `
+                <img src="${images[i].src}" alt="${images[i].title}" onclick="openModal(${i})">
+                <div class="overlay">${images[i].title}</div>
+            `;
+            galleryWrapper.appendChild(div);
+        }
+    }
+
+    function loadMoreImages() {
+        imagesLoaded += 6;
+        loadImages(imagesLoaded);
+        document.querySelector(".view-less").style.display = "inline-block";
+        if (imagesLoaded >= images.length) document.querySelector(".view-more").style.display = "none";
+    }
+
+    function loadLessImages() {
+        imagesLoaded = 6;
+        loadImages(imagesLoaded);
+        document.querySelector(".view-less").style.display = "none";
+        document.querySelector(".view-more").style.display = "inline-block";
+    }
+
+    function openModal(index) {
+        currentIndex = index;
+        document.getElementById("imageModal").style.display = "flex";
+        updateModal();
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateModal();
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateModal();
+    }
+
+    function updateModal() {
+        document.getElementById("modalImage").src = images[currentIndex].src;
+        document.getElementById("modalTitle").innerText = images[currentIndex].title;
+        document.getElementById("modalDescription").innerText = images[currentIndex].description;
+    }
+
+    loadImages(imagesLoaded);
+</script>
