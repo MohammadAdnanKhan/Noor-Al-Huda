@@ -1,0 +1,17 @@
+langchain_openai
+langchain_core
+python-dotenv
+streamlit
+langchain_community
+langserve
+fastapi
+unicorn
+sse_starlette
+bs4
+pypdf
+faiss-cpu
+express 
+pg 
+dotenv 
+body-parser 
+cors
