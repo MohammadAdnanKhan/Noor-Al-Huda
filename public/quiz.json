@@ -1,0 +1,183 @@
+[
+    {
+        "question": "What was the name of Prophet Muhammad's (PBUH) father?",
+        "choices": ["Abu Talib", "Abdullah", "Hamza", "Abdul Muttalib"],
+        "answer": "Abdullah"
+    },
+    {
+        "question": "What was the name of Prophet Muhammad's (PBUH) mother?",
+        "choices": ["Aminah", "Khadijah", "Fatimah", "Haleemah"],
+        "answer": "Aminah"
+    },
+    {
+        "question": "What tribe was Prophet Muhammad (PBUH) from?",
+        "choices": ["Banu Hashim", "Banu Quraish", "Banu Thaqif", "Banu Umayyah"],
+        "answer": "Banu Hashim"
+    },
+    {
+        "question": "Who was the first wife of Prophet Muhammad (PBUH)?",
+        "choices": ["Aisha", "Hafsa", "Khadijah", "Zainab"],
+        "answer": "Khadijah"
+    },
+    {
+        "question": "What was the occupation of Prophet Muhammad (PBUH) before Prophethood?",
+        "choices": ["Farmer", "Trader", "Carpenter", "Poet"],
+        "answer": "Trader"
+    },
+    {
+        "question": "Which angel brought revelation to Prophet Muhammad (PBUH)?",
+        "choices": ["Jibreel", "Mikail", "Israfil", "Izra'il"],
+        "answer": "Jibreel"
+    },
+    {
+        "question": "What was the first word revealed to Prophet Muhammad (PBUH)?",
+        "choices": ["Read", "Pray", "Worship", "Believe"],
+        "answer": "Read"
+    },
+    {
+        "question": "In which cave did Prophet Muhammad (PBUH) receive the first revelation?",
+        "choices": ["Thawr", "Hira", "Seer", "Noor"],
+        "answer": "Hira"
+    },
+    {
+        "question": "Who was Prophet Muhammad's (PBUH) grandfather?",
+        "choices": ["Abu Talib", "Abdullah", "Abdul Muttalib", "Hamza"],
+        "answer": "Abdul Muttalib"
+    },
+    {
+        "question": "Who was the nurse of Prophet Muhammad (PBUH) in his infancy?",
+        "choices": ["Fatimah", "Haleemah", "Aminah", "Sumayyah"],
+        "answer": "Haleemah"
+    },
+    {
+        "question": "Which of Prophet Muhammad’s (PBUH) uncles supported him but did not accept Islam?",
+        "choices": ["Abu Talib", "Abu Lahab", "Hamza", "Abbas"],
+        "answer": "Abu Talib"
+    },
+    {
+        "question": "What was the name of the migration of Muslims from Makkah to Madinah?",
+        "choices": ["Hijrah", "Hajj", "Jihad", "Umrah"],
+        "answer": "Hijrah"
+    },
+    {
+        "question": "What was the name of the first mosque built by Prophet Muhammad (PBUH)?",
+        "choices": ["Masjid al-Haram", "Masjid an-Nabawi", "Masjid Quba", "Masjid Aqsa"],
+        "answer": "Masjid Quba"
+    },
+    {
+        "question": "Which Jewish tribe broke their treaty with the Muslims in Madinah?",
+        "choices": ["Banu Quraizah", "Banu Nadir", "Banu Qaynuqa", "Banu Hashim"],
+        "answer": "Banu Quraizah"
+    },
+    {
+        "question": "What was the name of Prophet Muhammad's (PBUH) youngest daughter?",
+        "choices": ["Fatimah", "Zainab", "Ruqayyah", "Umm Kulthum"],
+        "answer": "Fatimah"
+    },
+    {
+        "question": "Who was known as 'The Trustworthy' among the Quraysh?",
+        "choices": ["Abu Bakr", "Ali", "Prophet Muhammad", "Umar"],
+        "answer": "Prophet Muhammad"
+    },
+    {
+        "question": "Which of these battles did the Muslims win despite being outnumbered?",
+        "choices": ["Uhud", "Badr", "Tabuk", "Hunayn"],
+        "answer": "Badr"
+    },
+    {
+        "question": "Who was Prophet Muhammad’s (PBUH) closest friend and the first Caliph?",
+        "choices": ["Ali", "Uthman", "Abu Bakr", "Umar"],
+        "answer": "Abu Bakr"
+    },
+    {
+        "question": "Which wife of Prophet Muhammad (PBUH) narrated the most hadith?",
+        "choices": ["Khadijah", "Aisha", "Hafsa", "Zainab"],
+        "answer": "Aisha"
+    },
+    {
+        "question": "Who was the first martyr of Islam?",
+        "choices": ["Hamza", "Yasir", "Sumayyah", "Khabab"],
+        "answer": "Sumayyah"
+    },
+    {
+        "question": "Which city did Prophet Muhammad (PBUH) migrate to from Makkah?",
+        "choices": ["Taif", "Madinah", "Yemen", "Jerusalem"],
+        "answer": "Madinah"
+    },
+    {
+        "question": "What was the treaty signed between the Muslims and Quraysh called?",
+        "choices": ["Treaty of Madinah", "Treaty of Badr", "Treaty of Hudaybiyyah", "Treaty of Tabuk"],
+        "answer": "Treaty of Hudaybiyyah"
+    },
+    {
+        "question": "Which battle took place after the Muslims faced defeat at Uhud?",
+        "choices": ["Battle of Badr", "Battle of Hunayn", "Battle of the Trench", "Battle of Tabuk"],
+        "answer": "Battle of the Trench"
+    },
+    {
+        "question": "Who was the Prophet’s (PBUH) cousin and son-in-law?",
+        "choices": ["Umar", "Uthman", "Ali", "Khalid ibn Walid"],
+        "answer": "Ali"
+    },
+        {
+            "question": "What was the name of the monk who recognized the signs of Prophethood in young Muhammad (PBUH)?",
+            "choices": ["Warqa bin Nawfal", "Bahira", "Nastoor", "Addas"],
+            "answer": "Bahira"
+        },
+        {
+            "question": "Who was the first child to accept Islam?",
+            "choices": ["Zaid ibn Haritha", "Ali ibn Abi Talib", "Abdullah ibn Mas'ud", "Abdullah ibn Umar"],
+            "answer": "Ali ibn Abi Talib"
+        },
+        {
+            "question": "What was the original name of Abu Bakr (RA)?",
+            "choices": ["Abdullah ibn Abi Quhafa", "Abdul Rahman ibn Awf", "Ammar ibn Yasir", "Khalid ibn Walid"],
+            "answer": "Abdullah ibn Abi Quhafa"
+        },
+        {
+            "question": "Which Surah of the Quran was revealed as a warning specifically to Abu Lahab?",
+            "choices": ["Surah Al-Kafirun", "Surah Al-Masad", "Surah Al-Falaq", "Surah Al-Nasr"],
+            "answer": "Surah Al-Masad"
+        },
+        {
+            "question": "What was the name of the black stone placed by Prophet Muhammad (PBUH) during the reconstruction of the Kaaba?",
+            "choices": ["Hajar al-Aswad", "Rukn al-Yamani", "Maqam Ibrahim", "Safa and Marwa"],
+            "answer": "Hajar al-Aswad"
+        },
+        {
+            "question": "Which companion was known as 'The Gatekeeper of Knowledge' and was closest to the Prophet (PBUH) in learning?",
+            "choices": ["Ali ibn Abi Talib", "Abu Huraira", "Ibn Abbas", "Umar ibn Khattab"],
+            "answer": "Ali ibn Abi Talib"
+        },
+        {
+            "question": "Which Jewish scholar accepted Islam after questioning the Prophet (PBUH) about 50 signs of Prophethood?",
+            "choices": ["Ka'b al-Ahbar", "Abdullah ibn Salam", "Huyayy ibn Akhtab", "Zaid ibn Thabit"],
+            "answer": "Abdullah ibn Salam"
+        },
+        {
+            "question": "Who was the first person to compile the Quran into a single book form after Prophet Muhammad (PBUH)?",
+            "choices": ["Uthman ibn Affan", "Ali ibn Abi Talib", "Abu Bakr", "Zaid ibn Thabit"],
+            "answer": "Abu Bakr"
+        },
+        {
+            "question": "Which battle is also known as 'Ghazwat al-Ahzab' (The Battle of the Confederates)?",
+            "choices": ["Battle of Uhud", "Battle of Badr", "Battle of the Trench", "Battle of Tabuk"],
+            "answer": "Battle of the Trench"
+        },
+        {
+            "question": "During the migration to Madinah, Prophet Muhammad (PBUH) hid in a cave with Abu Bakr. What was the name of the cave?",
+            "choices": ["Cave Hira", "Cave Thawr", "Cave Noor", "Cave Seer"],
+            "answer": "Cave Thawr"
+        },
+        {
+            "question": "Which of the Prophet's (PBUH) companions was known as 'The Possessor of Two Lights' because he married two of the Prophet’s daughters?",
+            "choices": ["Umar", "Ali", "Uthman", "Abu Bakr"],
+            "answer": "Uthman"
+        },
+        {
+            "question": "Which Surah of the Quran convinced Umar ibn Khattab (RA) to accept Islam?",
+            "choices": ["Surah Al-Fatiha", "Surah Al-Kahf", "Surah Ta-Ha", "Surah Al-Ikhlas"],
+            "answer": "Surah Ta-Ha"
+        }
+     ]
+    

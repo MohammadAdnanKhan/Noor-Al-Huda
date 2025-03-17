@@ -1,0 +1,123 @@
+{
+    "title": {
+      "text": {
+        "headline": "Seerat-un-Nabi (SAW)",
+        "text": "<p>Timeline of the life of Prophet Muhammad (SAW). <br>Click on the highlighted texts for detail and scroll the timeline.</p>"
+      }
+    },
+    "events": [
+      {
+        "start_date": { "year": "571" },
+        "text": {
+          "headline": "Birth of Prophet Muhammad (SAW)",
+          "text": "<p>Prophet Muhammad pbuh was born in Makkah on Monday, the 9th of Rabi’ul Awwal in the spring season in the Year of the Elephants (when Makkah Al-Mukarramah was attacked with an army comprising elephants)<br>Corresponding to 22 April 571 CE, between the dawn and the sunrise.<br>He was the only son of his parents. His father died before he was born.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "577" },
+        "text": {
+          "headline": "Death of Mother and Grandfather",
+          "text": "<p>At the age of 6, his mother Aminah passed away. His grandfather Abdul Muttalib took care of him but also passed away two years later.<br>Abdul Muttalib entrusted the responsibility of the Prophet’s guardianship to his son Abu Talib.<br>Abu Talib loved the Prophet (pbuh) very dearly and preferred him even to his children. He used to take him to sleep in his bed with him and kept him in his company when he went out.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "596" },
+        "text": {
+          "headline": "Marriage with Hazrat Khadija (RA)",
+          "text": "<p>Khadija was a widow living in Makkah, who had a very noble lineage. She was very rich and used to run her own business.<br>When she heard about the Prophet’s honesty, trustworthiness, and good management, she offered him to work for her and do a business for her that she would finance.<br>Impressed by his qualities, she herself proposed to the Prophet (pbuh) and entered into marriage with him, although she had turned down the proposal of renowned chiefs earlier.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "611" },
+        "text": {
+          "headline": "First Revelation - Prophethood",
+          "text": "<p>At the age of 40, Prophet Muhammad (SAW) received the first revelation from Angel Jibreel in the Cave of Hira.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "614" },
+        "text": {
+          "headline": "Public Preaching and Quraysh Opposition",
+          "text": "<p>Prophet Muhammad (SAW) began publicly preaching Islam, facing resistance and torture from the Quraysh. They abused Prophet and attacked him several times.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "615" },
+        "text": {
+          "headline": "Migration to Abyssinia",
+          "text": "<p>When the sufferings of Muslims crossed all limits, the Prophet (pbuh) allowed them to immigrate to Abyssinia (Habsha) for the safeguard of their lives and faith under the wise Christian King Najjashi.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "619" },
+        "text": {
+          "headline": "Year of Sorrow - Death of Abu Talib and Khadija",
+          "text": "<p>Prophet Muhammad (SAW) lost his two greatest supporters, his uncle Abu Talib and his wife Khadija (RA), in the same year.<br>Now the Quraysh felt bold to oppress the Prophet(pbuh). Once a mischief-monger threw mud on his head.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "619" },
+        "text": {
+          "headline": "Journey to Taif",
+          "text": "<p>After some time, the Prophet (pbuh) went to Taif to preach his message. But the people pelted him with stones. But the loving Prophet never cursed any of them.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "622" },
+        "text": {
+          "headline": "Migration to Madinah - Hijrah",
+          "text": "<p>Prophet Muhammad (SAW) and his companions migrated to Madinah, marking the start of the Islamic calendar.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "624" },
+        "text": {
+          "headline": "Battle of Badr",
+          "text": "<p>When the Muslims migrated to Medina, the Quraysh took over their belongings and planned to sell them in Syria.<br>Hoping to recover their losses, the Muslims set out to intercept a Quraysh caravan. However, the caravan changed its route, and the Quraysh gathered an army of 1000+ fighters, fully armed and ready for battle. The Muslims, only 313 in number with limited weapons, faced them at Badr.<br>Despite being outnumbered, the Muslims, with faith, strategy, and divine help, achieved a remarkable victory in their first major battle against the Quraysh.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "625" },
+        "text": {
+          "headline": "Battle of Uhud",
+          "text": "<p>The Battle of Uhud took place near Mount Uhud as the Quraysh sought revenge for their defeat at Badr.<br>The Quraysh gathered 3000 warriors, while the Muslims, only 700, positioned 50 archers on a hill with strict orders not to leave their posts. Initially, the Muslims dominated the battle, but when many archers disobeyed and left for war spoils, Khalid ibn al-Walid led a surprise attack from behind.<br>The Muslims suffered heavy losses, including Hazrat Hamza (RA), and the Prophet (PBUH) was injured. Although the Quraysh gained the upper hand, they failed to destroy the Muslims and returned to Makkah.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "627" },
+        "text": {
+          "headline": "Battle of Khandaq",
+          "text": "<p>The Battle of Khandaq saw 10,000 Quraysh-led forces march to Medina. In defense, Salman Al-Farsi (RA) suggested digging a trench, preventing enemy entry.<br>The 3000 Muslim defenders held their ground as the Quraysh faced a long siege, harsh winds, and internal conflicts. Unable to breach the trench, they retreated, making it a strategic Muslim victory without direct combat.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "628" },
+        "text": {
+          "headline": "Treaty of Hudaybiyah",
+          "text": "<p>The Treaty of Hudaybiyah was a peace agreement between the Muslims of Medina and the Quraysh of Makkah.<br>The Prophet (PBUH) and 1400 Muslims set out for Umrah but were stopped at Hudaybiyah.<br>After negotiations, both sides agreed to a 10-year truce, allowing Muslims to perform Umrah the following year. Some terms seemed unfavorable to the Muslims, but the treaty ultimately strengthened Islam, leading to the peaceful conquest of Makkah two years later.<br>The treaty was later broken by the Quraysh.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "630" },
+        "text": {
+          "headline": "Peaceful Conquest of Makkah",
+          "text": "<p>The Conquest of Makkah marked the peaceful takeover of Makkah by the Muslims.<br>After the Quraysh violated the Treaty of Hudaybiyah, the Prophet (PBUH) marched with 10,000 Muslims toward Makkah. The Quraysh, overwhelmed, surrendered without resistance.<br>The Prophet (PBUH) granted general amnesty, destroyed idols in the Kaaba, and established Islamic rule in the city. This event marked the end of Quraysh’s dominance and the spread of Islam across Arabia.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "632" },
+        "text": {
+          "headline": "Farewell Hajj",
+          "text": "<p>The Farewell Hajj was the only Hajj performed by the Prophet (PBUH) and his final pilgrimage before passing away.<br>Over 100,000 Muslims joined him in Makkah, where he completed the rites of Hajj and delivered his famous Farewell Sermon at Arafat. He emphasized unity, justice, women's rights, and the importance of the Quran and Sunnah.</p>"
+        }
+      },
+      {
+        "start_date": { "year": "632", "month": "06" },
+        "text": {
+          "headline": "Passing of Prophet Muhammad (SAW)",
+          "text": "<p>The Prophet Muhammad (PBUH) passed away in Medina at the age of 63.<br>In his final illness, he emphasized prayer and kindness. His last words were about the Ummah and fulfilling responsibilities. His passing marked the end of prophethood, but his teachings continue to guide millions worldwide.</p>"
+        }
+      }
+    ]
+  }
+  

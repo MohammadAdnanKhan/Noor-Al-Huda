@@ -1,0 +1,202 @@
+{
+        "duas": [
+          {
+            "title": "Dua for Waking Up",
+            "arabic": "الحمد لله الذي أحيانا بعد ما أماتنا وإليه النشور",
+            "transliteration": "Alhamdu lillahil-ladhi ahyana ba'da ma amatana wa-ilayhin-nushur.",
+            "translation": "All praise is for Allah who gave us life after having taken it from us and unto Him is the resurrection."
+          },
+          {
+            "title": "Dua Before Sleeping",
+            "arabic": "اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا",
+            "transliteration": "Allahumma bismika amutu wa ahya.",
+            "translation": "O Allah, in Your name I die and live."
+          },
+          {
+            "title": "Dua for Entering Home",
+            "arabic": "بِسْـمِ اللّهِ وَلَجْـنَا، وَبِسْـمِ اللّهِ خَـرَجْنَا، وَعَلَـى رَبِّنَا تَوَكَّـلْنَا",
+            "transliteration": "Bismillahi walajna, wa bismillahi kharajna, wa ‘ala rabbina tawakkalna.",
+            "translation": "In the name of Allah, we enter and in the name of Allah, we leave, and upon our Lord we rely."
+          },
+          {
+            "title": "Dua for Leaving Home",
+            "arabic": "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+            "transliteration": "Bismillahi, tawakkaltu 'ala Allah, wa la hawla wa la quwwata illa billah.",
+            "translation": "In the name of Allah, I place my trust in Allah, and there is no power nor might except with Allah."
+          },
+          {
+            "title": "Dua Before Eating",
+            "arabic": "بِسْمِ اللَّهِ",
+            "transliteration": "Bismillah.",
+            "translation": "In the name of Allah."
+          },
+          {
+            "title": "Dua After Eating",
+            "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مِنَ الْمُسْلِمِينَ",
+            "transliteration": "Alhamdu lillahi allathee at'amana wa saqana wa ja'alana minal muslimeen.",
+            "translation": "All praise is for Allah who fed us, gave us drink, and made us Muslims."
+          },
+          {
+            "title": "Dua for Entering the Toilet",
+            "arabic": " اللَّهُـمَّ إِنِّي أَعُـوذُ بِـكَ مِـنَ الْخُـبْثِ وَالْخَبَائِثِ",
+            "transliteration": "Allahumma inni a'udhu bika minal khubuthi wal khabaa'ith.",
+            "translation": "O Allah, I take refuge with you from all evil and evil-doers."
+          },
+          {
+            "title": "Dua for Leaving the Toilet",
+            "arabic": "غُفْرَانَكَ",
+            "transliteration": "Ghufranaka.",
+            "translation": "I ask You for Your forgiveness."
+          },
+          {
+            "title": "Dua for Seeking Forgiveness",
+            "arabic": "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",
+            "transliteration": "Astaghfirullah wa atubu ilayh.",
+            "translation": "I seek forgiveness from Allah and repent to Him."
+          },
+          {
+            "title": "Dua for Anxiety and Sadness",
+            "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الهَمِّ وَالحَزَنِ",
+            "transliteration": "Allahumma inni a'udhu bika minal-hammi wal-hazan.",
+            "translation": "O Allah, I seek refuge in You from anxiety and sadness."
+          },
+          {
+            "title": "Dua for Visiting the Sick",
+            "arabic": "لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللَّهُ",
+            "transliteration": "Laa ba'sa tahoorun 'inshaa'Allaah.",
+            "translation": "Do not worry, it will be a purification (for you), Allah willing."
+          },
+          {
+            "title": "Dua for Protection from Evil",
+            "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+            "transliteration": "A'udhu bikalimatillahi tammati min sharri ma khalaq.",
+            "translation": "I seek refuge in the perfect words of Allah from the evil of what He has created."
+          },
+          {
+            "title": "Dua for Parents",
+            "arabic": "رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+            "transliteration": "Rabbir hamhuma kama rabbayani sagheera.",
+            "translation": "My Lord, have mercy on them, as they raised me when I was a child."
+          },
+          {
+            "title": "Dua for Success",
+            "arabic": "رَبِّ زِدْنِي عِلْمًا",
+            "transliteration": "Rabbi zidni ilma.",
+            "translation": "O my Lord, increase me in knowledge."
+          },
+          {
+            "title": "Dua for Protection from Hellfire",
+            "arabic": "اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",
+            "transliteration": "Allahumma ajirni min an-naar.",
+            "translation": "O Allah, save me from the Hellfire."
+          },
+          {
+            "title": "Dua for Guidance",
+            "arabic": "اللَّهُمَّ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+            "transliteration": "Allahumma ihdinas-siratal mustaqeem.",
+            "translation": "O Allah, guide us to the Straight Path."
+          },
+          {
+            "title": "Dua for Traveling",
+            "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
+            "transliteration": "Subhanal-ladhi sakhkhara lana hadha wama kunna lahu muqrinin.",
+            "translation": "Glory is to Him who subjected this for us, and we could not have otherwise subdued it."
+          },
+          {
+            "title": "Dua for Distress",
+            "arabic": "لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+            "transliteration": "La ilaha illa anta, subhanaka inni kuntu minaz-zalimeen.",
+            "translation": "There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers. "
+          },
+          {
+            "title": "Dua for Strength in Faith",
+            "arabic": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
+            "transliteration": "Ya Muqallibal quloobi thabbit qalbi ‘ala deenik.",
+            "translation": "O Controller of hearts, make my heart firm in Your religion."
+          }
+        ],
+            "sunnah": [
+              {
+                "title": "Using Miswak",
+                "description": "The Prophet (ﷺ) regularly used Miswak to clean his teeth and encouraged others to do the same."
+              },
+              {
+                "title": "Sleeping on the Right Side",
+                "description": "The Prophet (ﷺ) used to sleep on his right side while placing his right hand under his cheek."
+              },
+              {
+                "title": "Saying Bismillah Before Eating",
+                "description": "The Prophet (ﷺ) said, 'Mention Allah's name before eating. If you forget, say: Bismillaah awwalahu wa aakhirahu.'"
+              },
+              {
+                "title": "Drinking Water in Three Sips",
+                "description": "The Prophet (ﷺ) drank water in three breaths and advised against drinking in one gulp."
+              },
+              {
+                "title": "Entering the Mosque with Right Foot",
+                "description": "The Prophet (ﷺ) would enter the mosque with his right foot and say a dua."
+              },
+              {
+                "title": "Leaving the Mosque with Left Foot",
+                "description": "The Prophet (ﷺ) exited the mosque with his left foot while making dua."
+              },
+              {
+                "title": "Greeting with Salam",
+                "description": "The Prophet (ﷺ) said, 'Spread salam among you' as it increases love and strengthens bonds."
+              },
+              {
+                "title": "Smiling at Others",
+                "description": "The Prophet (ﷺ) said, 'Smiling at your brother is an act of charity.'"
+              },
+              {
+                "title": "Helping Others",
+                "description": "Helping someone in need, whether by carrying their load or offering support, is a Sunnah act."
+              },
+              {
+                "title": "Eating with the Right Hand",
+                "description": "The Prophet (ﷺ) always ate with his right hand and advised others to do the same."
+              },
+              {
+                "title": "Covering Mouth When Sneezing",
+                "description": "The Prophet (ﷺ) covered his mouth when sneezing and said 'Alhamdulillah' afterward."
+              },
+              {
+                "title": "Using the Right Hand for Good Acts",
+                "description": "The Prophet (ﷺ) preferred using his right hand for good actions like eating, greeting, and giving charity."
+              },
+              {
+                "title": "Sleeping in a State of Wudu",
+                "description": "The Prophet (ﷺ) encouraged sleeping in a state of wudu, as it brings protection throughout the night."
+              },
+              {
+                "title": "Avoiding Wastage",
+                "description": "The Prophet (ﷺ) discouraged wasting food, water, or any other resources."
+              },
+              {
+                "title": "Reciting Ayat-ul-Kursi Before Sleeping",
+                "description": "The Prophet (ﷺ) advised reciting Ayat-ul-Kursi before sleeping for protection throughout the night."
+              },
+              {
+                "title": "Saying Alhamdulillah After Sneezing",
+                "description": "When sneezing, the Prophet (ﷺ) said 'Alhamdulillah' and encouraged others to respond with 'YarhamukAllah'."
+              },
+              {
+                "title": "Starting from the Right Side",
+                "description": "When wearing shoes, entering a place, or putting on clothes, the Prophet (ﷺ) would start with the right side first."
+              },
+              {
+                "title": "Keeping Modesty and Lowering Gaze",
+                "description": "The Prophet (ﷺ) taught that lowering the gaze is a way to protect oneself from evil thoughts and distractions."
+              },
+              {
+                "title": "Sleeping After Isha Prayer",
+                "description": "The Prophet (ﷺ) discouraged unnecessary talk after Isha and recommended sleeping early to wake up for Fajr."
+              },
+              {
+                "title": "Making Dua for Others",
+                "description": "The Prophet (ﷺ) said, 'When a Muslim prays for his brother in his absence, the angels say: Ameen, and the same for you.'"
+              }
+            ]
+          }
+    
+  
