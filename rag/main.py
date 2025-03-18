@@ -71,3 +71,7 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
         detail="Rate limit exceeded. You can make 10 requests every 15 minutes."
     )
 
+# Ensure the app runs on Render's provided port
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Render provides a PORT variable
+    uvicorn.run(app, host="0.0.0.0", port=port)
