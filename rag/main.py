@@ -1,3 +1,5 @@
+import os
+import uvicorn
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -8,8 +10,6 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
-import os
-import uvicorn
 
 app = FastAPI(
     title="IlmBot API",
@@ -71,6 +71,7 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
         detail="Rate limit exceeded. You can make 10 requests every 15 minutes."
     )
 
-import uvicorn
-port = int(os.getenv("PORT", 8000))  # Get PORT from Render, default to 8000 locally
-uvicorn.run(app, host="0.0.0.0", port=port)
+# Ensure the app runs only in local development
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
