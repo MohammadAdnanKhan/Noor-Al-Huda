@@ -71,7 +71,3 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
         detail="Rate limit exceeded. You can make 10 requests every 15 minutes."
     )
 
-# Ensure the app runs only in local development
-if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
