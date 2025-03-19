@@ -1,4 +1,4 @@
-import os
+# import os
 import uvicorn
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -73,5 +73,18 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
 
 # Ensure the app runs on Render's provided port
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Render provides a PORT variable
-    uvicorn.run(app, host='0.0.0.0', port=port, debug=False)
+    from dotenv import load_dotenv
+    import os
+    load_dotenv()
+
+
+    # Check if the PORT variable is loaded
+    # port = int(os.getenv("PORT", 8000))
+    # if not port:
+        # print("PORT environment variable not loaded!")
+    # else:
+        # print(f"Loaded PORT: {port}")
+
+    port = int(os.getenv("PORT", 8000))  # Render provides a PORT variable
+    print(f"Loaded PORT: {port}")
+    uvicorn.run(app, host='0.0.0.0', port=port)
