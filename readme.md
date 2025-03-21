@@ -1,6 +1,6 @@
 # Noor-Al-Huda
 
-![Noor-Al-Huda Banner](images/home.png)
+![Noor-Al-Huda Banner](public/images/home.png)
 
 A comprehensive web application dedicated to the **life and teachings of Prophet Muhammad (PBUH)**, featuring **IlmBot**, daily Hadith, historical places, quizzes, and **Seerat resources**.
 
