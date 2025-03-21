@@ -14,132 +14,82 @@
         font-family: 'Poppins', sans-serif;
     }
     
+    
     .chat-container {
         max-width: 600px;
-        height: 80vh;
-        margin: 40px auto;
+        width: 90%;
+        height: auto;
+        padding: 25px;
         background: white;
-        padding: 20px;
         border-radius: 12px;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
         border: 2px solid var(--accent-color);
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .chat-box {
-        flex: 1;
-        overflow-y: auto;
-        border: 2px solid var(--accent-color);
-        padding: 15px;
-        border-radius: 10px;
-        background-color: var(--bot-bg);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        scroll-behavior: smooth;
-    }
-    
-    .chat-box::-webkit-scrollbar {
-        width: 8px;
-    }
-    
-    .chat-box::-webkit-scrollbar-thumb {
-        background-color: var(--accent-color);
-        border-radius: 5px;
-    }
-    
-    .message {
-        padding: 12px;
-        border-radius: 10px;
-        max-width: 75%;
-        word-wrap: break-word;
-        white-space: pre-wrap;
-        font-size: 15px;
-        animation: fadeIn 0.3s ease-in-out;
-    }
-    
-    .user-message {
-        background-color: var(--user-bg);
-        color: var(--text-light);
-        align-self: flex-end;
-        border-radius: 18px 18px 0 18px;
-        padding: 10px 14px;
-    }
-    
-    .bot-message {
-        background-color: white;
-        color: var(--text-dark);
-        border-radius: 18px 18px 18px 0;
-        align-self: flex-start;
-        padding: 10px 14px;
-        border-left: 4px solid var(--accent-color);
-    }
-    
-    .bot-heading {
-        font-weight: bold;
-        font-size: 22px;
-        color: var(--primary-color);
         text-align: center;
-        position: relative;
-        margin-bottom: 10px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
-    
+
+    .chat-container:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .bot-heading {
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        position: relative;
+    }
+
     .bot-heading::after {
         content: "";
-        width: 60px;
-        height: 3px;
+        width: 70px;
+        height: 4px;
         background: var(--accent-color);
         display: block;
-        margin: 5px auto;
+        margin: 8px auto;
         border-radius: 5px;
     }
-    
-    .loading {
-        display: none;
-        font-style: italic;
-        color: #777;
-    }
-    
-    .input-group {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    
-    .input-group input {
-        flex: 1;
-        border-radius: 8px;
-        padding: 12px;
-        font-size: 15px;
-        border: 2px solid var(--primary-color);
-        outline: none;
-        transition: 0.3s;
-    }
-    
-    .input-group input:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0px 0px 8px var(--accent-color);
-    }
-    
-  .btn-custom {
-    background-color: transparent;
-    border: 2px solid var(--accent-color);
-    color: var(--primary-color);
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 12px 22px;
-    font-size: 16px;
-    transition: 0.3s;
-}
 
-.btn-custom:hover {
-    background-color: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
-    box-shadow: 0px 0px 8px var(--accent-color);
-}
-    
+    .btn-custom {
+        background-color: transparent;
+        border: 2px solid var(--accent-color);
+        color: var(--primary-color);
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 12px 22px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 15px;
+    }
+
+    .btn-custom:hover {
+        background-color: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+        box-shadow: 0px 0px 12px var(--accent-color);
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .chat-container {
+            width: 95%;
+            padding: 20px;
+        }
+
+        .btn-custom {
+            font-size: 14px;
+            padding: 10px 18px;
+        }
+    }
+    .chat-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }    
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(5px); }
         to { opacity: 1; transform: translateY(0); }
@@ -216,17 +166,20 @@
 
 <%- include("./partials/navbar.ejs") %>
 
-<div class="chat-container">
-    <h3 class="bot-heading">📖 IlmBot - Ask About Seerat</h3>
-    
-    <div class="chat-box" id="chat-box"></div>
-    <p id="loading" class="loading text-center">⏳ IlmBot is thinking...</p>
-
-    <div class="input-group">
-        <input type="text" id="user-input" class="form-control" placeholder="Type your question..." onkeypress="handleEnter(event)">
-        <button class="btn btn-custom" onclick="sendMessage()">Send</button>
+<div class="chat-wrapper">
+    <div class="chat-container">
+        <h3 class="bot-heading">📖 IlmBot - Ask About Seerat</h3>
+        <button class="btn-custom" onclick="openStreamlit()">Open Chatbot</button>
     </div>
 </div>
+
+<script>
+function openStreamlit() {
+    window.open("https://ilmbot.streamlit.app/", 
+                "StreamlitApp", 
+                "width=1000,height=800,left=100,top=50");
+}
+</script>
 <p style="font-size: 12px; color: #666; text-align: center; margin: 20px auto; max-width: 70%;">
     You can ask up to <strong>10 questions every 15 minutes</strong>. This limit helps maintain system stability and prevents unexpected issues.
 </p>
@@ -312,7 +265,7 @@
 
 <%- include("./partials/footer.ejs") %>
 
-<script>
+<!-- <script>
     const apiUrl = "http://127.0.0.1:8000/chat/"; 
 
     document.getElementById("user-input").addEventListener("keypress", function(event) {
@@ -392,7 +345,7 @@
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-</script>
+</script> -->
 
 </body>
 </html>
