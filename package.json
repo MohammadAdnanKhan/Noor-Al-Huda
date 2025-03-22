@@ -11,11 +11,14 @@
   "description": "",
   "dependencies": {
     "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "http-proxy-middleware": "^3.0.3",
-    "pg": "^8.14.0"
+    "pg": "^8.14.1",
+    "request-ip": "^3.3.0",
+    "short-uuid": "^5.2.0"
   }
 }

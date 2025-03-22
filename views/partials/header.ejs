@@ -21,35 +21,3 @@
 
 </head>
 <body>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let userId = localStorage.getItem("user_id");
-        
-            if (!userId) {
-                userId = generateUUID();
-                localStorage.setItem("user_id", userId);
-            }
-        
-            sendUserIdToBackend(userId);
-        
-            function generateUUID() {
-                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                    let r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-                    return v.toString(16);
-                });
-            }
-        
-            async function sendUserIdToBackend(userId) {
-                try {
-                    await fetch("/track-user", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ user_id: userId })
-                    });
-                } catch (error) {
-                    console.error("Error tracking user:", error);
-                }
-            }
-        });
-        </script>
